@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {
+  /*{
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
-  },
+  }*/
   {
     path: 'home',
     loadChildren: './home/home.module#HomePageModule'
@@ -22,7 +22,15 @@ const routes: Routes = [
   {
     path: 'player',
     loadChildren: './player/player.module#PlayerModule'
-  }
+  },
+ //{ path: '', redirectTo: 'home', pathMatch: 'full' },
+ { path: '', loadChildren: './login/login.module#LoginPageModule' },
+ { path: 'register', loadChildren: './register/register.module#RegisterPageModule' },
+  { path: 'forget', loadChildren: './forget/forget.module#ForgetPageModule' },  { path: 'account', loadChildren: './account/account.module#AccountPageModule' }
+
+
+  
+
 
 ];
 
@@ -32,4 +40,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
