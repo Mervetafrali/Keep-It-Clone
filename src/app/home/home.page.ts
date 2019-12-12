@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SQLService } from '../services/sql/sql.service';
-
+import { MenuController, IonSlides } from '@ionic/angular';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -10,13 +10,18 @@ export class HomePage {
 
   portals = [];
 
-  constructor(private sqlService: SQLService) { 
+  constructor(private sqlService: SQLService,
+    public menuCtrl: MenuController
+    ) { 
     this.sqlService.getDbState().subscribe(ready => {
       if (ready) {
         this.getPortals();
       }
     });
   }
+  ionViewWillEnter() {
+    this.menuCtrl.enable(true);
+   }
 
   getPortals() {
     this.sqlService.db.executeSql('SELECT * FROM portal').then((rs: any) => {

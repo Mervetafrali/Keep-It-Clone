@@ -1,56 +1,47 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Account</ion-title>
-  </ion-toolbar>
-</ion-header>
-  
-<ion-content padding>
-  <form class="form" [formGroup]="validations_form"  (ngSubmit)="loginUser(validations_form.value)">
-    <ion-item>
-      <ion-label  position="floating" color="primary">Name</ion-label>
-      <ion-input type="text" formControlName="name"></ion-input>
-    </ion-item>
-    <div class="validation-errors">
-      <ng-container *ngFor="let validation of validation_messages.name">
-        <div class="error-message" *ngIf="validations_form.get('name').hasError(validation.type) && (validations_form.get('name').dirty || validations_form.get('name').touched)">
-          {{ validation.message }}
-        </div>
-      </ng-container>
-    </div>
- 
-    <ion-item>
-      <ion-label  position="floating" color="primary">Surname</ion-label>
-      <ion-input type="text" formControlName="surname"></ion-input>
-    </ion-item>
-    <div class="validation-errors">
-      <ng-container *ngFor="let validation of validation_messages.surname">
-        <div class="error-message" *ngIf="validations_form.get('surname').hasError(validation.type) && (validations_form.get('surname').dirty || validations_form.get('surname').touched)">
-          {{ validation.message }}
-        </div>
-      </ng-container>
-    </div>
-
-    <ion-item>
-      <ion-label  position="floating" color="primary">Username</ion-label>
-      <ion-input type="text" formControlName="username"></ion-input>
-    </ion-item>
-    <div class="validation-errors">
-      <ng-container *ngFor="let validation of validation_messages.username">
-        <div class="error-message" *ngIf="validations_form.get('username').hasError(validation.type) && (validations_form.get('username').dirty || validations_form.get('username').touched)">
-          {{ validation.message }}
-        </div>
-      </ng-container>
-    </div>
- 
-    <ion-button  class="submit-btn" type="submit"  [disabled]="!validations_form.valid" (click)='goToNotePage()'>Save</ion-button>
-    
-      
-    
-          
+    <ion-toolbar>
+      <ion-title>
+        Profile
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
    
-    <label class="error-message">{{errorMessage}}</label>
-    <p></p>
-    <button (click)="changeText()" ion-button>{{text}}</button>
-  </form>
-
-</ion-content>
+  <ion-content padding>
+   
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-input placeholder="Enter Name" [(ngModel)]="uname"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+        <ion-row><ion-col>
+          <ion-item>
+            <ion-input placeholder="Enter Surname" [(ngModel)]="usurname"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row><ion-col>
+          <ion-item>
+            <ion-input placeholder="Enter Username" [(ngModel)]="userName"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+     
+        
+      
+      <ion-row>
+        <ion-col text-center>
+          <ion-button (click)="CreateRecord()" [disabled]="!uname || !usurname || !userName ">
+            <ion-icon size="small" slot="icon-only" name="add"></ion-icon>
+            &nbsp;Create Record
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+   
+   
+   
+   
+  </ion-content>
