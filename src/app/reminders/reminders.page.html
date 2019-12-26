@@ -1,0 +1,122 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>reminders</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+
+  <ion-card *ngFor="let item of notes">
+    <span *ngIf="!item.nArsiv">
+      <span *ngIf="item.nHatirlaticiB">
+        <span *ngIf="!item.isEdit; else elseBlock">
+          <ion-card-header>
+            <ion-card-title>{{item.nBaslik}}</ion-card-title>
+            <ion-card-subtitle>{{item.nIcerik}}</ion-card-subtitle>
+            <ion-card-subtitle class="etiket"> <i> {{item.nEtiket}} </i></ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+
+            <ion-button shape="round" color="secondary" size="small" (click)="EditRecord(item)">
+              <ion-icon size="small" slot="icon-only" name="create"></ion-icon>
+
+            </ion-button>
+            <ion-button shape="round" color="danger" size="small" (click)="RemoveRecord(item.id)">
+              <ion-icon size="small" slot="icon-only" name="trash"></ion-icon>
+            </ion-button>
+
+
+          </ion-card-content>
+        </span>
+      </span>
+    </span>
+    <ng-template #elseBlock>
+      <ion-card-header>
+        <ion-card-title>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                Düzenle
+              </ion-col>
+              <ion-col>
+                <ion-button fill="clear" color="medium" size="small" (click)="item.isEdit = false">
+                  İptal
+                </ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button fill="outline" color="success" size="small" (click)="UpdateRecord(item)">
+                  Güncelle
+                </ion-button>
+                <ion-button shape="round" color="warning" size="small" (click)="Archive(item)">
+                  <ion-icon size="small" slot="icon-only" name="archive"></ion-icon>
+                </ion-button>
+                <ion-button shape="round" color="primary" size="small" (click)="Reminders(item)">
+                  <ion-icon size="small" slot="icon-only" name="notifications"></ion-icon>
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label><strong>Başlık</strong></ion-label>
+          <ion-input type="text" [(ngModel)]="item.EditnBaslik"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label><strong>İçerik</strong></ion-label>
+          <ion-textarea type="text" [(ngModel)]="item.EditnIcerik"></ion-textarea>
+        </ion-item>
+        <ion-item>
+          <ion-label>Etiket</ion-label>
+          <ion-select [(ngModel)]="item.EditnEtiket" placeholder="Etiket seç">
+            <ion-select-option *ngFor="let item of etiket">{{item.Name}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        
+          <ion-item>
+            <ion-label>Date</ion-label>
+            <ion-datetime [(ngModel)]="item.EditnDaate" display-format="DD MMM YYYY" ></ion-datetime>
+          </ion-item>
+          <br>
+          <ion-item>
+            <ion-label>Time</ion-label>
+            <ion-datetime [(ngModel)]="item.EditnTime" display-format="hh mm A"></ion-datetime>
+          </ion-item>
+          
+        
+         
+          <ion-item>
+            <ion-list lines="full">  
+              <ion-item>
+                <ion-label>Repeat</ion-label>
+                <ion-select [(ngModel)]="repeat" placeholder="Select One">
+                  <ion-select-option value="daily">Daily</ion-select-option>
+                  <ion-select-option value="friday">Every Friday</ion-select-option>
+                </ion-select>
+              </ion-item>
+          
+              <ion-item>
+                <ion-label>Time</ion-label>
+                <ion-datetime [(ngModel)]="notifyAt" displayFormat="hh:mm A" pickerFormat="hh mm A" placeholder="Select Time"></ion-datetime>
+              </ion-item>
+            
+            </ion-list>
+          </ion-item>
+        
+
+
+      </ion-card-content>
+    </ng-template>
+  </ion-card>
+  <ion-footer class="ion-margin-bottom">
+
+    <ion-button expand="block" shape="round" color="secondary" (click)="onSchedule()">
+      Schedule
+    </ion-button>
+    <ion-button expand="block" shape="round" color="danger" (click)="onCancel()" >
+      Cancel All
+    </ion-button>
+  </ion-footer>
+</ion-content>

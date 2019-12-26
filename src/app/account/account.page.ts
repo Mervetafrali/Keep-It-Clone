@@ -24,6 +24,7 @@ export class AccountPage implements OnInit {
   userName: string;
   umail: string;
   upass: string;
+  arttir:string;
 
   constructor(
 
@@ -81,6 +82,7 @@ export class AccountPage implements OnInit {
         console.log(error);
       });
   }
+
 
 
 }

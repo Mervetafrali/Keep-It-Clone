@@ -20,8 +20,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
- 
+
+import { DatePicker } from '@ionic-native/date-picker/ngx';
+import { Camera } from '@ionic-native/camera/ngx'
+import { File } from '@ionic-native/file/ngx';
 import * as firebase from 'firebase';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+ 
 firebase.initializeApp(environment.firebase);
 @NgModule({
   declarations: [AppComponent],
@@ -38,12 +43,16 @@ firebase.initializeApp(environment.firebase);
     AngularFireAuthModule, HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+   
   ],
   providers: [
     StatusBar,
-    SplashScreen,
+    SplashScreen, Camera,
     AuthenticateService,
+    DatePicker,
+    LocalNotifications,
+    File,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     SQLite
   ],

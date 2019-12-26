@@ -3,7 +3,10 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { NavController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authentication.service';
 import { MenuController, IonSlides } from '@ionic/angular';
+import { Router, NavigationExtras } from '@angular/router';
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
 
+import { SQLService } from '../services/sql/sql.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -13,8 +16,10 @@ export class LoginPage implements OnInit {
 
   
   row_data: any = [];
+  portals = [];
   validations_form: FormGroup;
   errorMessage: string = '';
+  public idd:string;
   public onlineOffline: boolean = navigator.onLine;
   public text: string = 'check your internet';
   public items: Array<{ uname: string; surname:string; mail: string; pass: string ; username:string }> = [];
@@ -24,15 +29,28 @@ export class LoginPage implements OnInit {
     private authService: AuthenticateService,
     private formBuilder: FormBuilder,
     public menuCtrl: MenuController,
+    private router: Router,
+    private sqlService: SQLService,
    
    
  
-  ) { }
+  ) {this.sqlService.getDbState().subscribe(ready => {
+    if (ready) {
+      this.getPortals();
+    }
+  }); }
   ionViewWillEnter() {
     this.menuCtrl.enable(false);
    }
    
-  
+   getPortals() {
+    this.sqlService.db.executeSql('SELECT * FROM portal').then((rs: any) => {
+      this.sqlService.asArray(rs).then((list) => {
+        this.portals = list;
+        console.log(this.portals);
+      });
+    });
+  }
  
   ngOnInit() {
     
@@ -69,7 +87,9 @@ export class LoginPage implements OnInit {
       .then(res => {
         console.log(res);
         this.errorMessage = "";
-        this.navCtrl.navigateForward('/home');
+        console.log(value.email);
+        this.idd=value.email;
+        this.router.navigate(['/notes', { id: value.email} ]);
       }, err => {
         this.errorMessage = err.message;
       })

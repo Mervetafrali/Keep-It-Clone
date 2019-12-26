@@ -29,6 +29,31 @@ export class AppComponent {
       title: 'Player',
       url: '/player',
       icon: 'musical-notes'
+    },
+    {
+      title: 'Notes',
+      url: '/notes',
+      icon: 'create'
+    },
+    {
+      title: 'Tags',
+      url: '/tags',
+      icon: 'pricetag'
+    }   ,
+    {
+      title: 'Archive',
+      url: '/archive',
+      icon: 'archive'
+    },
+    {
+      title: 'Reminders',
+      url: '/reminders',
+      icon: 'notifications'
+    },
+    {
+      title: 'ToDo',
+      url: '/todo',
+      icon: 'checkbox-outline'
     }
   ];
 
@@ -38,7 +63,7 @@ export class AppComponent {
     private statusBar: StatusBar
   ) {
     this.initializeApp();
-  }
+  }1
 
   initializeApp() {
     this.platform.ready().then(() => {

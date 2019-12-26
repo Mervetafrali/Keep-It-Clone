@@ -8,7 +8,13 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-button (click)="takeSnap()">
+  Take Snap
+</ion-button>
 
+<img [src]="capturedSnapURL" />
 <ion-content>
     <ion-button routerLink="/portal">Go Portal</ion-button>
 </ion-content>
+
+<button ion-button  (click)="logout()">Logout</button>

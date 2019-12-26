@@ -6,7 +6,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
   providedIn: 'root'
 })
 export class CrudService {
- 
+  arttir:string;
   constructor(
     private firestore: AngularFirestore
   ) { }
@@ -26,6 +26,21 @@ export class CrudService {
  
   delete_User(record_id) {
     this.firestore.doc('Users/' + record_id).delete();
+  }
+  create_NewNotes(record) {
+    return this.firestore.collection('Notes').add(record);
+  }
+ 
+  read_Notes() {
+    return this.firestore.collection('Notes').snapshotChanges();
+  }
+ 
+  update_Notes(recordID,record){
+    this.firestore.doc('Notes/' + recordID).update(record);
+  }
+ 
+  delete_Notes(record_id) {
+    this.firestore.doc('Notes/' + record_id).delete();
   }
 }
  
