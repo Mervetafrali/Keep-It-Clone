@@ -14,36 +14,38 @@ import { SQLService } from '../services/sql/sql.service';
 })
 export class LoginPage implements OnInit {
 
-  
+
   row_data: any = [];
   portals = [];
   validations_form: FormGroup;
   errorMessage: string = '';
-  public idd:string;
+  public idd: string;
   public onlineOffline: boolean = navigator.onLine;
   public text: string = 'check your internet';
-  public items: Array<{ uname: string; surname:string; mail: string; pass: string ; username:string }> = [];
+  public items: Array<{ uname: string; surname: string; mail: string; pass: string; username: string }> = [];
   constructor(
- 
+
     private navCtrl: NavController,
     private authService: AuthenticateService,
     private formBuilder: FormBuilder,
     public menuCtrl: MenuController,
     private router: Router,
     private sqlService: SQLService,
-   
-   
- 
-  ) {this.sqlService.getDbState().subscribe(ready => {
-    if (ready) {
-      this.getPortals();
-    }
-  }); }
+
+
+
+  ) {
+    this.sqlService.getDbState().subscribe(ready => {
+      if (ready) {
+        this.getPortals();
+      }
+    });
+  }
   ionViewWillEnter() {
     this.menuCtrl.enable(false);
-   }
-   
-   getPortals() {
+  }
+
+  getPortals() {
     this.sqlService.db.executeSql('SELECT * FROM portal').then((rs: any) => {
       this.sqlService.asArray(rs).then((list) => {
         this.portals = list;
@@ -51,11 +53,11 @@ export class LoginPage implements OnInit {
       });
     });
   }
- 
+
   ngOnInit() {
-    
-    
- 
+
+
+
     this.validations_form = this.formBuilder.group({
       email: new FormControl('', Validators.compose([
         Validators.required,
@@ -67,8 +69,8 @@ export class LoginPage implements OnInit {
       ])),
     });
   }
- 
- 
+
+
   validation_messages = {
     'email': [
       { type: 'required', message: 'Email is required.' },
@@ -79,44 +81,44 @@ export class LoginPage implements OnInit {
       { type: 'minlength', message: 'Password must be at least 5 characters long.' }
     ]
   };
- 
 
-  loginUser(value){
-  
-      this.authService.loginUser(value)
+
+  loginUser(value) {
+
+    this.authService.loginUser(value)
       .then(res => {
         console.log(res);
         this.errorMessage = "";
         console.log(value.email);
-        this.idd=value.email;
-        this.router.navigate(['/notes', { id: value.email} ]);
+        this.idd = value.email;
+        this.router.navigate(['/notes', { id: value.email }]);
       }, err => {
         this.errorMessage = err.message;
       })
-    
-  
+
+
   }
- 
-  goToRegisterPage(){
+
+  goToRegisterPage() {
     this.navCtrl.navigateForward('/register');
   }
   public changeText(): void {
 
     if (!navigator.onLine) {
-      this.text='You are offline'
-      }else{
-        this.text='You are onnline'
-      }
-   
+      this.text = 'You are offline'
+    } else {
+      this.text = 'You are onnline'
+    }
+
   }
-  goToForgetPage(){
-    
+  goToForgetPage() {
+
     this.navCtrl.navigateForward('/forget');
   }
-  
-   
-  
-    
-  
- 
+
+
+
+
+
+
 }

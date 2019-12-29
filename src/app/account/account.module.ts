@@ -7,7 +7,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { AccountPage } from './account.page';
-
+import { FileSizeFormatPipe } from './file-size-format.pipe';
+ 
 const routes: Routes = [
   {
     path: '',
@@ -23,6 +24,6 @@ const routes: Routes = [
   ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [AccountPage]
+  declarations: [AccountPage,FileSizeFormatPipe]
 })
 export class AccountPageModule {}

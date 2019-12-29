@@ -5,7 +5,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SQLite } from '@ionic-native/sqlite/ngx';
@@ -20,13 +20,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-
+import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 import { DatePicker } from '@ionic-native/date-picker/ngx';
 import { Camera } from '@ionic-native/camera/ngx'
 import { File } from '@ionic-native/file/ngx';
 import * as firebase from 'firebase';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
- 
+import { AngularFireStorageModule } from '@angular/fire/storage';
+
 firebase.initializeApp(environment.firebase);
 @NgModule({
   declarations: [AppComponent],
@@ -40,6 +41,7 @@ firebase.initializeApp(environment.firebase);
     PortalModule,
     PlayerModule,
     ReactiveFormsModule,
+    AngularFireStorageModule, // imports firebase/storage only needed for storage features,
     AngularFireAuthModule, HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
@@ -53,8 +55,9 @@ firebase.initializeApp(environment.firebase);
     DatePicker,
     LocalNotifications,
     File,
+    AngularFireAuthGuard,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    SQLite
+    SQLite, NativeStorage
   ],
   bootstrap: [AppComponent]
 })

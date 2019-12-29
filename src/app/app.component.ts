@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -53,14 +54,16 @@ export class AppComponent {
     {
       title: 'ToDo',
       url: '/todo',
-      icon: 'checkbox-outline'
+      icon: 'checkbox'
     }
   ];
 
   constructor(
+    private router: Router,
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    
   ) {
     this.initializeApp();
   }1
@@ -69,6 +72,7 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      
     });
   }
 }
