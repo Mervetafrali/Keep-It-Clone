@@ -9,13 +9,24 @@ Uygulamamızı geliştirirken kullanıcıya şu seçenekleri sunduk:
  
 Uygulamamızda ilk olarak bir giriş ekranı görünür. 
 
-(login resim)
+![loginpage](https://github.com/2019-BLM441/app-160202100/blob/master/IMG_1429.PNG)
 
 Bu sayfamızdan kullanıcı girişi ile uygulamaya giriş yapılır. Giriş işlemi yapılırken kullanıcının internet durumuna bakılarak giriş işlemi gerçekleştirilir. 
 Üye olmayan kullanıcı için yeni üye olma sayfasından mail ve parola girişi yapılarak üye kaydı tamamlanır ve kullanıcı profil sayfasından bilgilerini güncelleyip fotoğraf ekleme işlemini gerçekleştirerek ana sayfaya yönlendirilir.
 
-(ana sayfa resim)
+
+![homepage](https://github.com/2019-BLM441/app-160202100/blob/master/IMG_1433.PNG)
 
 Uygulamaya giriş yapan kullanıcılar not, etiket, yapılacaklar listesi sayfalarında ekleme, silme, güncelleme ve silme işlemlerini gerçekleştirebilirler.
 
+![homepage](https://github.com/2019-BLM441/app-160202100/blob/master/IMG_1436.PNG)
+
+
 Bu uygulama ile gününüzü daha iyi planlayabilir, işlerinizi unutmadan ve detayları atlamadan her şeyi kaydedebilirsiniz!
+
+
+| Hazırlayanlar | 
+| ------------- | 
+| Merve Tafralı | 
+| Edanur Tosun  |
+| Ayça Çoşkun   |
