@@ -5,8 +5,8 @@ import { AuthenticateService } from '../services/authentication.service';
 import { MenuController, IonSlides } from '@ionic/angular';
 import { Router, NavigationExtras } from '@angular/router';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
-
 import { SQLService } from '../services/sql/sql.service';
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -14,7 +14,7 @@ import { SQLService } from '../services/sql/sql.service';
 })
 export class LoginPage implements OnInit {
 
-
+  
   row_data: any = [];
   portals = [];
   validations_form: FormGroup;
@@ -31,10 +31,12 @@ export class LoginPage implements OnInit {
     public menuCtrl: MenuController,
     private router: Router,
     private sqlService: SQLService,
+     private nativeStorage: NativeStorage
 
 
 
   ) {
+    
     this.sqlService.getDbState().subscribe(ready => {
       if (ready) {
         this.getPortals();
@@ -43,6 +45,13 @@ export class LoginPage implements OnInit {
   }
   ionViewWillEnter() {
     this.menuCtrl.enable(false);
+  }
+  clear() {
+    this.nativeStorage.clear()
+      .then(
+        data => console.log(data),
+        error => console.error(error)
+      );
   }
 
   getPortals() {
@@ -91,7 +100,12 @@ export class LoginPage implements OnInit {
         this.errorMessage = "";
         console.log(value.email);
         this.idd = value.email;
-        this.router.navigate(['/notes', { id: value.email }]);
+        this.nativeStorage.setItem('loginitem', { mailad: value.email, passad: value.password })
+          .then(
+            (data) => console.log('Stored first item!', data),
+            error => console.error('Error storing item', error)
+          );
+          this.navCtrl.navigateForward('/home');
       }, err => {
         this.errorMessage = err.message;
       })

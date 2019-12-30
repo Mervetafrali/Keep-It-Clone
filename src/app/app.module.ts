@@ -27,7 +27,9 @@ import { File } from '@ionic-native/file/ngx';
 import * as firebase from 'firebase';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-
+import { Logger, LoggingService } from "ionic-logging-service";
+import {LoggerService} from './services/logger.service';
+import {ConsoleLoggerService} from './services/console-logger.service';
 firebase.initializeApp(environment.firebase);
 @NgModule({
   declarations: [AppComponent],
@@ -54,10 +56,12 @@ firebase.initializeApp(environment.firebase);
     AuthenticateService,
     DatePicker,
     LocalNotifications,
+    NativeStorage,
     File,
+    { provide: LoggerService, useClass: ConsoleLoggerService },
     AngularFireAuthGuard,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    SQLite, NativeStorage
+    SQLite, 
   ],
   bootstrap: [AppComponent]
 })

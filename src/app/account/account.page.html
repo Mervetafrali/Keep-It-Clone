@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Profile
+      Profil
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,21 +13,21 @@
       <ion-row>
         <ion-col>
           <ion-item>
-            <ion-input placeholder="Enter Name" [(ngModel)]="uname"></ion-input>
+            <ion-input placeholder="İsim Giriniz" [(ngModel)]="uname"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
           <ion-item>
-            <ion-input placeholder="Enter Surname" [(ngModel)]="usurname"></ion-input>
+            <ion-input placeholder="Soyadı Giriniz" [(ngModel)]="usurname"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
           <ion-item>
-            <ion-input placeholder="Enter Username" [(ngModel)]="userName"></ion-input>
+            <ion-input placeholder="Kullanıcı Adı Girriniz" [(ngModel)]="userName"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -38,7 +38,7 @@
         <ion-col text-center>
           <ion-button (click)="CreateRecord()" [disabled]="!uname || !usurname || !userName ">
             <ion-icon size="small" slot="icon-only" name="add"></ion-icon>
-            &nbsp;Create Record
+            &nbsp;Kaydol
           </ion-button>
         </ion-col>
       </ion-row>

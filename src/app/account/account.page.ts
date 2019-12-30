@@ -10,6 +10,8 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 import { Observable } from 'rxjs';
 import { finalize, tap } from 'rxjs/operators';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
 export interface MyData {
   name: string;
   filepath: string;
@@ -77,22 +79,33 @@ export class AccountPage implements OnInit {
     private route: ActivatedRoute,
     public dataService: DataService,
     private crudService: CrudService,
-    private storage: AngularFireStorage, private database: AngularFirestore
+    private storage: AngularFireStorage, private database: AngularFirestore,private nativeStorage: NativeStorage
 
 
   ) {
+    
   this.isUploading = false;
     this.isUploaded = false;
     //Set collection where our documents/ images info will save
     this.imageCollection = database.collection<MyData>('freakyImages');
     this.images = this.imageCollection.valueChanges();
+    
   }
+  clear() {
+    this.nativeStorage.clear()
+      .then(
+        data => console.log(data),
+        error => console.error(error)
+      );
+  }
+  
 
   ngOnInit() {
+    
     this.sub = this.route.params.subscribe(params => {
       this.id = params['mail']; this.pass = params['password']
     });
-
+    
     this.crudService.read_Users().subscribe(data => {
 
       this.users = data.map(e => {
@@ -137,6 +150,11 @@ export class AccountPage implements OnInit {
       this.userName = "";
       this.umail = "";
       this.upass = "";
+      this.nativeStorage.setItem('loginitem', { mailad: this.id, passad: this.pass })
+          .then(
+            (data) => console.log('Stored first item!', data),
+            error => console.error('Error storing item', error)
+          );
       this.navCtrl.navigateForward('/home');
       console.log(resp);
     })

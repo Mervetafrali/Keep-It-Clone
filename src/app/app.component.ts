@@ -4,7 +4,7 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
-
+import {LoggerService} from './services/logger.service'
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
@@ -12,42 +12,27 @@ import { Router } from '@angular/router';
 export class AppComponent {
   public appPages = [
     {
-      title: 'Home',
+      title: 'Ana Sayfa',
       url: '/home',
       icon: 'home'
     },
     {
-      title: 'List',
-      url: '/list',
-      icon: 'list'
-    },
-    {
-      title: 'Portal',
-      url: '/portal',
-      icon: 'grid'
-    },
-    {
-      title: 'Player',
-      url: '/player',
-      icon: 'musical-notes'
-    },
-    {
-      title: 'Notes',
+      title: 'Notlar',
       url: '/notes',
       icon: 'create'
     },
     {
-      title: 'Tags',
+      title: 'Etiketler',
       url: '/tags',
       icon: 'pricetag'
     }   ,
     {
-      title: 'Archive',
+      title: 'Arşiv',
       url: '/archive',
       icon: 'archive'
     },
     {
-      title: 'Reminders',
+      title: 'Hatırlatıcı',
       url: '/reminders',
       icon: 'notifications'
     },
@@ -63,9 +48,19 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
+    private logger: LoggerService
     
   ) {
     this.initializeApp();
+    // Incorrect source file name and line number :(
+      logger.invokeConsoleMethod( 'info', 'AppComponent: logger.invokeConsoleMethod()');
+      logger.invokeConsoleMethod( 'warn', 'AppComponent: logger.invokeConsoleMethod()');
+      logger.invokeConsoleMethod( 'error', 'AppComponent: logger.invokeConsoleMethod()');
+  
+      // Correct source file name and line number :)
+      logger.info('AppComponent: logger.info()');
+      logger.warn('AppComponent: logger.warn()');
+      logger.error('AppComponent: logger.error()');
   }1
 
   initializeApp() {

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Recover Password</ion-title>
+    <ion-title>Şifremi Kurtar</ion-title>
   </ion-toolbar>
 </ion-header>
  
@@ -21,11 +21,11 @@
  
     
  
-    <ion-button  class="submit-btn" type="submit"  [disabled]="!validations_form.valid">Log In</ion-button>
+    <ion-button  class="submit-btn" type="submit"  [disabled]="!validations_form.valid">Giriş</ion-button>
  
     <label class="error-message">{{errorMessage}}</label>
   </form>
   <p class="go-to-register">
-    No account yet? <a (click)="goToRegisterPage()">Create an account.</a>
+    Hesabınız yok mu?  <a (click)="goToRegisterPage()"> Kaydolun.</a>
   </p>
 </ion-content>

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Register</ion-title>
+    <ion-title>Kaydol</ion-title>
   </ion-toolbar>
 </ion-header>
  
@@ -20,7 +20,7 @@
     </div>
  
     <ion-item>
-      <ion-label  position="floating" color="primary">Password</ion-label>
+      <ion-label  position="floating" color="primary">Şifre</ion-label>
       <ion-input type="password" formControlName="password" class="form-controll" required></ion-input>
     </ion-item>
     <div class="validation-errors">
@@ -32,9 +32,9 @@
     </div>
  
     
-    <ion-button  class="submit-btn" type="submit"  [disabled]="!validations_form.valid">Register</ion-button>
+    <ion-button  class="submit-btn" type="submit"  [disabled]="!validations_form.valid">Kaydol</ion-button>
     <label class="error-message">{{errorMessage}}</label>
     <label class="success-message">{{successMessage}}</label>
   </form>
-  <p class="go-to-login">Already have an account? <a (click)="goLoginPage()">Try to Log In.</a></p>
+  <p class="go-to-login">Hesabınız var mı? <a (click)="goLoginPage()">Giriş Yapın</a></p>
 </ion-content>

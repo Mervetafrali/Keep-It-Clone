@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Login</ion-title>
+    <ion-title>Giriş</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -35,7 +35,7 @@
     </ion-row>
     <ion-row>
       <ion-item>
-        <ion-label position="floating" color="primary">Password</ion-label>
+        <ion-label position="floating" color="primary">Şifre</ion-label>
         <ion-input type="password" formControlName="password" class="form-controll" required></ion-input>
       </ion-item>
       <div class="validation-errors">
@@ -50,7 +50,7 @@
     <ion-row>
         <ion-col col-4></ion-col>
         <ion-col col-4>
-            <ion-button class="submit-btn" type="submit" [disabled]="!validations_form.valid">Log In</ion-button>
+            <ion-button class="submit-btn" type="submit" [disabled]="!validations_form.valid">Giriş</ion-button>
 
             <label class="error-message">{{errorMessage}}</label>
         </ion-col>
@@ -61,12 +61,12 @@
   <ion-row></ion-row>
   <ion-row>
     <p class="go-to-register">
-      No account yet? <a (click)="goToRegisterPage()">Create an account.</a>
+      Hesabınız yok mu? <a (click)="goToRegisterPage()"> Kaydolun</a>
     </p>
   </ion-row>
   <ion-row>
     <p class="go-to-register">
-      Forget Password? <a (click)="goToForgetPage()">Change your password.</a>
+      Şifrenizi mi unuttunuz? <a (click)="goToForgetPage()"> Şifrenizi Değiştirin</a>
     </p>
   </ion-row>
   <ion-row>

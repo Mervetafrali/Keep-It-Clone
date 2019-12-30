@@ -5,18 +5,24 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Router, NavigationExtras } from '@angular/router';
 import { NavController } from '@ionic/angular';
+
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-
+  text = "mail";
   portals = [];
-  
+
   constructor(private sqlService: SQLService,
-    public menuCtrl: MenuController, private navCtrl: NavController,public fAuth: AngularFireAuth, private router: Router,
-    ) { 
+    public menuCtrl: MenuController, 
+    private navCtrl: NavController, 
+    public fAuth: AngularFireAuth, 
+    private router: Router, 
+    private nativeStorage: NativeStorage,
+  ) {
     this.sqlService.getDbState().subscribe(ready => {
       if (ready) {
         this.getPortals();
@@ -25,7 +31,7 @@ export class HomePage {
   }
   ionViewWillEnter() {
     this.menuCtrl.enable(true);
-   }
+  }
 
   getPortals() {
     this.sqlService.db.executeSql('SELECT * FROM portal').then((rs: any) => {
@@ -35,11 +41,23 @@ export class HomePage {
       });
     });
   }
-  
+
   logout() {
-   
+
     return this.fAuth.auth.signOut().then(() => {
       this.navCtrl.navigateForward('/');
     })
+  }
+  public changeText(): void {
+    this.nativeStorage.getItem('loginitem')
+      .then(
+        data => {
+          console.log(data.mailad)
+          this.text = data.mailad;
+        },
+        error => console.error(error)
+      );
+
+
   }
 }
