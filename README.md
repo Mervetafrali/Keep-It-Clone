@@ -7,6 +7,10 @@ Uygulamamızı geliştirirken kullanıcıya şu seçenekleri sunduk:
  * Etiket oluşturmak, oluşturulan etikete renk atayabilmek ve bu etiketlerin not sayfasında kullanıcı tarafından kullanılabilmesi.
  * Yapacaklar listesi oluşturabilmek, gün içerisinde ya da yapmak istenilen olayları bu liste ile kullanıcıya sunabilmek.
  
+ 
+ ![](https://github.com/2019-BLM441/app-160202100/blob/master/KeepIt.gif)
+ 
+ 
 Uygulamamızda ilk olarak bir giriş ekranı görünür. 
 
 <img src="https://github.com/2019-BLM441/app-160202100/blob/master/IMG_1429.PNG" width=200 align=center>
@@ -27,7 +31,7 @@ Uygulamaya giriş yapan kullanıcılar not, etiket, yapılacaklar listesi sayfal
 
 Bu uygulama ile gününüzü daha iyi planlayabilir, işlerinizi unutmadan ve detayları atlamadan her şeyi kaydedebilirsiniz!
 
-![](https://github.com/2019-BLM441/app-160202100/blob/master/KeepIt.gif)
+
 
 
 Uygulamızın kısa bir videosu için : https://drive.google.com/file/d/1kghEtOS-PdbBIiLdpf-peWA6rtXChh9T/view?usp=sharing 
