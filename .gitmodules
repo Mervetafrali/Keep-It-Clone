@@ -1,3 +1,12 @@
 [submodule "module-160202100"]
 	path = module-160202100
 	url = https://github.com/2019-BLM441/module-160202100.git
+[submodule "src/app/module-160202100"]
+	path = src/app/module-160202100
+	url = https://github.com/2019-BLM441/module-160202100.git
+[submodule "src/app/module-160202098"]
+	path = src/app/module-160202098
+	url = https://github.com/2019-BLM441/module-160202098.git
+[submodule "src/app/module-160202021"]
+	path = src/app/module-160202021
+	url = https://github.com/2019-BLM441/module-160202021.git

@@ -5,7 +5,7 @@ import { NavController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authentication.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DataService } from '../data.service';
-import { CrudService } from '../notes/crudnotes.service';
+import { CrudService } from '../module-160202100/notes/crudnotes.service';
 
 @Component({
   selector: 'app-archive',

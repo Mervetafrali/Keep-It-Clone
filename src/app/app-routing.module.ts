@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'register', loadChildren: './register/register.module#RegisterPageModule' },
   { path: 'forget', loadChildren: './forget/forget.module#ForgetPageModule' },
-  { path: 'notes', loadChildren: './notes/notes.module#NotesPageModule', canActivate: [AuthGuard], },
+  { path: 'notes', loadChildren: './module-160202100/notes/notes.module#NotesPageModule', canActivate: [AuthGuard], },
   { path: 'account', loadChildren: './account/account.module#AccountPageModule' },
   { path: 'tags', loadChildren: './module-160202098/tags/tags.module#TagsPageModule', canActivate: [AuthGuard], },
   { path: 'archive', loadChildren: './archive/archive.module#ArchivePageModule', canActivate: [AuthGuard], },
@@ -36,7 +36,8 @@ const routes: Routes = [
   {
     path: 'player',
     loadChildren: './player/player.module#PlayerModule'
-  },  { path: 'logout', loadChildren: './logout/logout.module#LogoutPageModule' }
+  },
+  { path: 'logout', loadChildren: './logout/logout.module#LogoutPageModule' }
 
 
 
