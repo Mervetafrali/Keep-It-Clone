@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AuthenticateService } from '../services/authentication.service';
 import { NavController } from '@ionic/angular';
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
 
+import { SQLService } from '../services/sql/sql.service';
 import { Storage } from '@ionic/storage';
 import { Router, NavigationExtras } from '@angular/router';
 import { NavParams } from '@ionic/angular';
-
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -21,7 +23,7 @@ export class RegisterPage implements OnInit {
   private mail='merve';
   private pass;
   
-  
+  users = [];
  
   
  
@@ -37,10 +39,12 @@ export class RegisterPage implements OnInit {
  };
  
   constructor(
+    private sqlService: SQLService,
     private navCtrl: NavController,
     private authService: AuthenticateService,
     private formBuilder: FormBuilder,
     private router: Router,
+    private nativeStorage: NativeStorage,
    
     
    
@@ -48,6 +52,11 @@ export class RegisterPage implements OnInit {
   ) {}
  
   ngOnInit(){
+    this.sqlService.getDbState().subscribe(ready => {
+      if (ready) {
+        this.getPortals();
+      }
+    });
     this.validations_form = this.formBuilder.group({
       email: new FormControl('', Validators.compose([
         Validators.required,
@@ -59,13 +68,30 @@ export class RegisterPage implements OnInit {
       ])),
     });
   }
- 
+  getPortals2(mail,pass) {
+    
+    var sql = "INSERT INTO `users` (mailadd,upas) VALUES ('"+mail+"','"+ pass+"')";
+    
+     this.sqlService.db.executeSql(sql,{})
+     .then(() => console.log("başarılı"))
+     .catch(e => console.log("başarısız"));
+
+  }
+  getPortals() {
+    this.sqlService.db.executeSql('SELECT * FROM users').then((rs: any) => {
+      this.sqlService.asArray(rs).then((list) => {
+        this.users = list;
+        console.log(this.users);
+      });
+    });
+  }
   tryRegister(value){
     this.authService.registerUser(value)
      .then(res => {
        console.log(res);
        this.errorMessage = "";
        this.successMessage = "Your account has been created. Please log in.";
+       this.getPortals2(value.email,value.password);
        this.router.navigate(['/account', { mail: value.email ,password:value.password}]);
        
      }, err => {
@@ -74,7 +100,7 @@ export class RegisterPage implements OnInit {
        this.successMessage = "";
      })
   }
- 
+  
   goLoginPage(){
     this.navCtrl.navigateForward('/');
   }

@@ -15,7 +15,7 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
 export class HomePage {
   text = "mail";
   portals = [];
-
+  users = [];
   constructor(private sqlService: SQLService,
     public menuCtrl: MenuController, 
     private navCtrl: NavController, 
@@ -34,11 +34,18 @@ export class HomePage {
   }
 
   getPortals() {
-    this.sqlService.db.executeSql('SELECT * FROM portal').then((rs: any) => {
+    this.sqlService.db.executeSql('SELECT * FROM users').then((rs: any) => {
       this.sqlService.asArray(rs).then((list) => {
-        this.portals = list;
-        console.log(this.portals);
+        this.users = list;
+        console.log(this.users);
       });
+    });
+  }
+  ngOnInit() {
+    this.sqlService.getDbState().subscribe(ready => {
+      if (ready) {
+        this.getPortals();
+      }
     });
   }
 

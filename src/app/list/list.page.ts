@@ -20,6 +20,7 @@ export class ListPage implements OnInit {
     'bluetooth',
     'build'
   ];
+  users = [];
   public items: Array<{ title: string; note: string; icon: string }> = [];
   constructor(private sqlService: SQLService) {
     /*
@@ -31,7 +32,14 @@ export class ListPage implements OnInit {
       });
     }*/
   }
-
+  getPortals() {
+    this.sqlService.db.executeSql('SELECT * FROM users').then((rs: any) => {
+      this.sqlService.asArray(rs).then((list) => {
+        this.users = list;
+        console.log(this.users);
+      });
+    });
+  }
   getNotes() {
     this.sqlService.db.executeSql('SELECT * FROM note').then((rs: any) => {
       this.sqlService.asArray(rs).then((list) => {
@@ -44,7 +52,7 @@ export class ListPage implements OnInit {
   ngOnInit() {
     this.sqlService.getDbState().subscribe(ready => {
       if (ready) {
-        this.getNotes();
+        this.getPortals();
       }
     });
   }

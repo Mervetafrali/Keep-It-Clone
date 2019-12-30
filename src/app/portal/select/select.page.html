@@ -11,8 +11,8 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let portal of portals">
-      <h2>{{ portal.name }}</h2>
+    <ion-item *ngFor="let user of users">
+      <h2>{{ user.mailadd }}</h2>
     </ion-item>
   </ion-list>
   <ion-button (click)="getPortals()">Refresh Portals</ion-button>

@@ -16,7 +16,7 @@ export class LoginPage implements OnInit {
 
   
   row_data: any = [];
-  portals = [];
+  users = [];
   validations_form: FormGroup;
   errorMessage: string = '';
   public idd: string;
@@ -55,10 +55,10 @@ export class LoginPage implements OnInit {
   }
 
   getPortals() {
-    this.sqlService.db.executeSql('SELECT * FROM portal').then((rs: any) => {
+    this.sqlService.db.executeSql('SELECT * FROM users').then((rs: any) => {
       this.sqlService.asArray(rs).then((list) => {
-        this.portals = list;
-        console.log(this.portals);
+        this.users = list;
+        console.log(this.users);
       });
     });
   }
@@ -91,10 +91,20 @@ export class LoginPage implements OnInit {
     ]
   };
 
-
+  
   loginUser(value) {
 
-    this.authService.loginUser(value)
+
+    if (!navigator.onLine) {
+      this.text = 'Çevrimdışısınız, uygulamayı kısıtlı kullanacaksınız!'
+      this.getPortals();
+      for(let i=0;i<this.users.length;i++){
+        if(this.users[i].mailadd===value.email &&this.users[i].upas===value.password ){
+            this.navCtrl.navigateForward('/home');
+        }
+      }
+    } else {
+      this.authService.loginUser(value)
       .then(res => {
         console.log(res);
         this.errorMessage = "";
@@ -109,6 +119,9 @@ export class LoginPage implements OnInit {
       }, err => {
         this.errorMessage = err.message;
       })
+    }
+
+    
 
 
   }
