@@ -28,6 +28,8 @@ Uygulamaya giriş yapan kullanıcılar not, etiket, yapılacaklar listesi sayfal
 Bu uygulama ile gününüzü daha iyi planlayabilir, işlerinizi unutmadan ve detayları atlamadan her şeyi kaydedebilirsiniz!
 
 
+Uygulamızın kısa bir videosu için : https://drive.google.com/file/d/1kghEtOS-PdbBIiLdpf-peWA6rtXChh9T/view?usp=sharing 
+
 | Hazırlayanlar | 
 | ------------- | 
 | Merve Tafralı | 
