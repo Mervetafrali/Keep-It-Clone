@@ -9,19 +9,19 @@ Uygulamamızı geliştirirken kullanıcıya şu seçenekleri sunduk:
  
 Uygulamamızda ilk olarak bir giriş ekranı görünür. 
 
-<img src="https://github.com/2019-BLM441/app-160202100/blob/master/IMG_1429.PNG" width=50 align=right>
+<img src="https://github.com/2019-BLM441/app-160202100/blob/master/IMG_1429.PNG" width=100 align=center>
 
 
 
 Bu sayfamızdan kullanıcı girişi ile uygulamaya giriş yapılır. Giriş işlemi yapılırken kullanıcının internet durumuna bakılarak giriş işlemi gerçekleştirilir. 
 Üye olmayan kullanıcı için yeni üye olma sayfasından mail ve parola girişi yapılarak üye kaydı tamamlanır ve kullanıcı profil sayfasından bilgilerini güncelleyip fotoğraf ekleme işlemini gerçekleştirerek ana sayfaya yönlendirilir.
 
-<img src="https://github.com/2019-BLM441/app-160202100/blob/master/IMG_1433.PNG" width=50 align=right>
+<img src="https://github.com/2019-BLM441/app-160202100/blob/master/IMG_1433.PNG" width=100 align=center>
 
 
 Uygulamaya giriş yapan kullanıcılar not, etiket, yapılacaklar listesi sayfalarında ekleme, silme, güncelleme ve silme işlemlerini gerçekleştirebilirler.
 
-<img src="https://github.com/2019-BLM441/app-160202100/blob/master/IMG_1436.PNG" width=50 align=right>
+<img src="https://github.com/2019-BLM441/app-160202100/blob/master/IMG_1436.PNG" width=100 align=center>
 
 
 
