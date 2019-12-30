@@ -27,6 +27,8 @@ Uygulamaya giriş yapan kullanıcılar not, etiket, yapılacaklar listesi sayfal
 
 Bu uygulama ile gününüzü daha iyi planlayabilir, işlerinizi unutmadan ve detayları atlamadan her şeyi kaydedebilirsiniz!
 
+![](https://github.com/2019-BLM441/app-160202100/blob/master/KeepIt.gif)
+
 
 Uygulamızın kısa bir videosu için : https://drive.google.com/file/d/1kghEtOS-PdbBIiLdpf-peWA6rtXChh9T/view?usp=sharing 
 
