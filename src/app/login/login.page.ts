@@ -21,7 +21,7 @@ export class LoginPage implements OnInit {
   errorMessage: string = '';
   public idd: string;
   public onlineOffline: boolean = navigator.onLine;
-  public text: string = 'check your internet';
+  public text: string = 'İnternetinizi kontrol edin!';
   public items: Array<{ uname: string; surname: string; mail: string; pass: string; username: string }> = [];
   constructor(
 
@@ -119,9 +119,9 @@ export class LoginPage implements OnInit {
   public changeText(): void {
 
     if (!navigator.onLine) {
-      this.text = 'You are offline'
+      this.text = 'Çevrimdışı'
     } else {
-      this.text = 'You are onnline'
+      this.text = 'Çevrimiçi'
     }
 
   }

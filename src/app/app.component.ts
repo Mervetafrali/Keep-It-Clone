@@ -32,14 +32,14 @@ export class AppComponent {
       icon: 'archive'
     },
     {
-      title: 'Hatırlatıcı',
-      url: '/reminders',
-      icon: 'notifications'
-    },
-    {
       title: 'ToDo',
       url: '/todo',
       icon: 'checkbox'
+    },
+    {
+      title: 'Çıkış',
+      url: '/logout',
+      icon: 'exit'
     }
   ];
 

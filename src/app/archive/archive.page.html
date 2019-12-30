@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Arişv</ion-title>
+    <ion-title>Arşiv</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,9 +13,9 @@
     <span *ngIf="item.nArsiv">
       <span *ngIf="!item.isEdit; else elseBlock">
         <ion-card-header>
-          <ion-card-title>{{item.nBaslik}}</ion-card-title>
-          <ion-card-subtitle>{{item.nIcerik}}</ion-card-subtitle>
-          <ion-card-subtitle class="etiket"> <i> {{item.nEtiket}} </i></ion-card-subtitle>
+          <ion-card-title>{{item.nBaslik | letterpipe}}</ion-card-title>
+          <ion-card-subtitle>{{item.nIcerik | letterpipe }}</ion-card-subtitle>
+          <ion-card-subtitle class="etiket"> <i> {{item.nEtiket | letterpipe }} </i></ion-card-subtitle>
         </ion-card-header>
         <ion-card-content>
 
@@ -68,7 +68,7 @@
         <ion-item>
           <ion-label>Etiket</ion-label>
           <ion-select [(ngModel)]="item.EditnEtiket" placeholder="Etiket seç">
-            <ion-select-option *ngFor="let item of etiket">{{item.Name}}</ion-select-option>
+            <ion-select-option *ngFor="let item of etiket">{{item.Name | letterpipe }}</ion-select-option>
           </ion-select>
         </ion-item>
 

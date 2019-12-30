@@ -30,6 +30,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { Logger, LoggingService } from "ionic-logging-service";
 import {LoggerService} from './services/logger.service';
 import {ConsoleLoggerService} from './services/console-logger.service';
+
 firebase.initializeApp(environment.firebase);
 @NgModule({
   declarations: [AppComponent],
