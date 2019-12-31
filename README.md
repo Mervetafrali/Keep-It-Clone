@@ -8,6 +8,7 @@ Uygulamamızı geliştirirken kullanıcıya şu seçenekleri sunduk:
  * Yapacaklar listesi oluşturabilmek, gün içerisinde ya da yapmak istenilen olayları bu liste ile kullanıcıya sunabilmek.
  
  
+ 
  ![](https://github.com/2019-BLM441/app-160202100/blob/master/KeepIt.gif)
  
  
@@ -31,19 +32,37 @@ Uygulamaya giriş yapan kullanıcılar not, etiket, yapılacaklar listesi sayfal
 
 Bu uygulama ile gününüzü daha iyi planlayabilir, işlerinizi unutmadan ve detayları atlamadan her şeyi kaydedebilirsiniz!
 
-modülleri indirmek için -> 
 
-* https://github.com/2019-BLM441/module-160202100.git 
 
-* https://github.com/2019-BLM441/module-160202098.git  
+Uygulamızı indirmek için :
+ 
+ ```
+git clone https://github.com/2019-BLM441/app-160202100.git
 
-* https://github.com/2019-BLM441/module-160202021.git
+```
+
+Gerekli modül dosyalarının adreslerine girip,
+
+ ```
+git clone https://github.com/2019-BLM441/module-160202100.git 
+
+```
+
+```
+git clone https://github.com/2019-BLM441/module-160202098.git 
+
+```
+ 
+```
+git clone https://github.com/2019-BLM441/module-160202021.git 
+
+```
 
 
 Uygulamızın kısa bir videosu için : https://drive.google.com/file/d/1kghEtOS-PdbBIiLdpf-peWA6rtXChh9T/view?usp=sharing 
 
-| Hazırlayanlar | 
-| ------------- | 
-| Merve Tafralı | 
-| Edanur Tosun  |
-| Ayça Çoşkun   |
+| Hazırlayanlar |                |
+| ------------- |  ------------- | 
+| Merve Tafralı |  160202100     | 
+| Edanur Tosun  |  160202098     | 
+| Ayça Çoşkun   |  160202021     | 
