@@ -30,7 +30,8 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { Logger, LoggingService } from "ionic-logging-service";
 import {LoggerService} from './services/logger.service';
 import {ConsoleLoggerService} from './services/console-logger.service';
-
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 firebase.initializeApp(environment.firebase);
 @NgModule({
   declarations: [AppComponent],
@@ -56,6 +57,8 @@ firebase.initializeApp(environment.firebase);
     SplashScreen, Camera,
     AuthenticateService,
     DatePicker,
+    Geolocation,
+    NativeGeocoder,
     LocalNotifications,
     NativeStorage,
     File,

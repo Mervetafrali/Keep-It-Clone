@@ -99,7 +99,13 @@ export class LoginPage implements OnInit {
       this.text = 'Çevrimdışısınız, uygulamayı kısıtlı kullanacaksınız!'
       this.getPortals();
       for(let i=0;i<this.users.length;i++){
+        
         if(this.users[i].mailadd===value.email &&this.users[i].upas===value.password ){
+          this.nativeStorage.setItem('loginitem', { mailad: value.email, passad: value.password })
+          .then(
+            (data) => console.log('Stored first item!', data),
+            error => console.error('Error storing item', error)
+          );
             this.navCtrl.navigateForward('/home');
         }
       }

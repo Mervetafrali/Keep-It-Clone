@@ -13,6 +13,7 @@ import 'firebase/auth';
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
+  public onlineOffline: boolean = navigator.onLine;
   constructor(private router: Router) { }
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -23,6 +24,10 @@ export class AuthGuard implements CanActivate {
         if (user) {
           resolve(true);
         } else {
+          if(!navigator.onLine){
+            console.log('no connection');
+            resolve(true);
+          }
           console.log('User is not logged in');
           this.router.navigate(['/login']);
           resolve(false);
